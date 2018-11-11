@@ -2,7 +2,7 @@ package com.kodilla.testing.shape;
 
 public class Circle implements Shape {
     public String getShapeName() {
-        return String.valueOf(this.getClass());
+        return "Circle";
     }
 
     public double getField() {

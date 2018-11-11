@@ -5,24 +5,27 @@ import java.util.ArrayList;
 public class ShapeCollector {
     ArrayList<Shape> shapes = new ArrayList<>();
     public void addFigure(Shape shape) {
-        //nothing
+        shapes.add(shape);
     }
 
     public void removeFigure(Shape shape){
-        //nothing
+        shapes.remove(shape);
     }
 
-    public ArrayList getFigure(int n) {
-        return null;
-        //return (ArrayList) shapes.get(n);
+    public Shape getFigure(int n) {
+        return shapes.get(n);
     }
 
     public String showFigures() {
-        return "";
+        String output = "";
+        for (Shape item: shapes) {
+
+            output +=  item.getShapeName()+",";
+        }
+        return output;
     }
 
     public int getSize() {
-        return 0;
-        //return shapes.size();
+        return shapes.size();
     }
 }

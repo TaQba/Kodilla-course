@@ -2,7 +2,7 @@ package com.kodilla.testing.shape;
 
 public class Triangle implements Shape {
     public String getShapeName() {
-        return String.valueOf(this.getClass());
+        return "Triangle";
     }
 
     public double getField() {

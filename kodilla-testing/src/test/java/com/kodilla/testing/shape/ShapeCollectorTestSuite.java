@@ -22,19 +22,12 @@ public class ShapeCollectorTestSuite {
     @Test
     public void testRemoveFigure() {
         //Given
+        collection.addFigure(circle);
+        collection.addFigure(square);
         //When
         collection.removeFigure(circle);
         //Then
         Assert.assertEquals(1, collection.getSize());
-    }
-
-    @Test
-    public void testGetFigureEmptyCollection() {
-        //Given
-        //When
-        //Then
-        Assert.assertEquals(0, collection.getSize());
-        Assert.assertEquals(0, collection.getFigure(0));
     }
 
     @Test
@@ -61,7 +54,8 @@ public class ShapeCollectorTestSuite {
         collection.addFigure(square);
         collection.addFigure(triagnle);
         //Then
-        Assert.assertEquals("Circle,Square,Triangle", collection.showFigures());
+        Assert.assertEquals(3, collection.getSize());
+        Assert.assertEquals("Circle,Square,Triangle,", collection.showFigures());
     }
 
 }
