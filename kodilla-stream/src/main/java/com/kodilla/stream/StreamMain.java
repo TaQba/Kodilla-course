@@ -1,18 +1,25 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.book.Book;
-import com.kodilla.stream.book.BookDirectory;
+import com.kodilla.stream.forumuser.*;
+import java.time.Year;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
-        BookDirectory theBookDirectory = new BookDirectory();
-        String theResultStringOfBooks = theBookDirectory.getList().stream()
-                .filter(book -> book.getYearOfPublication() > 2005)
-                .map(Book::toString)
-                .collect(Collectors.joining(",\n","<<",">>"));
+        Forum theForum = new Forum();
+        int yearMinus20 = Year.now().getValue() - 20;
 
-        System.out.println(theResultStringOfBooks);
+        Map< Integer, ForumUser> theResultMapOfForum  = theForum.getUserList().stream()
+                .filter(user -> user.getSex() == 'F')
+                .filter(user -> user.getYob() > yearMinus20)
+                .filter(user -> user.getNumberOfPosts() > 0)
+
+                .collect(Collectors.toMap(ForumUser::getId, user -> user));
+
+        System.out.println("# elements: " + theResultMapOfForum.size());
+        theResultMapOfForum.entrySet().stream()
+                .map(entry -> entry.getKey() + ": " + entry.getValue())
+                .forEach(System.out::println);
     }
 }
