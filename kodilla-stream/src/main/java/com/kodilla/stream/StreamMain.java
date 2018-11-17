@@ -3,6 +3,7 @@ package com.kodilla.stream;
 import com.kodilla.stream.lambda.*;
 import com.kodilla.stream.reference.*;
 import com.kodilla.stream.beautifier.*;
+import com.kodilla.stream.iterate.*;
 
 public class StreamMain {
     public static void main(String[] args) {
@@ -32,6 +33,9 @@ public class StreamMain {
         PoemBeautifier poem = new PoemBeautifier();
         poem.beautify("Impsum Lorem", String::toUpperCase);
         poem.beautify("Impsum Lorem", String::toLowerCase);
+
+        System.out.println("Using Stream to generate even numbers from 1 to 20");
+        NumbersGenerator.generateEven(20);
 
     }
 }
