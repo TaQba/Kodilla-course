@@ -6,7 +6,11 @@ import java.util.*;
 import java.util.stream.*;
 
 public class BoardTestSuite {
-    public Board prepareTestData() {
+
+    Board project;
+
+    @Before
+    public void before() {
         //users
         User user1 = new User("developer1", "John Smith");
         User user2 = new User("projectmanager1", "Nina White");
@@ -60,20 +64,18 @@ public class BoardTestSuite {
         taskListInProgress.addTask(task2);
         TaskList taskListDone = new TaskList("Done");
         taskListDone.addTask(task6);
+
         //board
-        Board project = new Board("Project Weather Prediction");
+        project = new Board("Project Weather Prediction");
         project.addTaskList(taskListToDo);
         project.addTaskList(taskListInProgress);
         project.addTaskList(taskListDone);
-        return project;
     }
 
     @Test
     public void testAddTaskList() {
         //Given
-        Board project = prepareTestData();
         //When
-
         //Then
         Assert.assertEquals(3, project.getTaskLists().size());
     }
@@ -81,7 +83,6 @@ public class BoardTestSuite {
     @Test
     public void testAddTaskListFindUsersTasks() {
         //Given
-        Board project = prepareTestData();
         //When
         User user = new User("developer1", "John Smith");
         List<Task> tasks = project.getTaskLists().stream()
@@ -97,7 +98,6 @@ public class BoardTestSuite {
     @Test
     public void testAddTaskListFindOutdatedTasks() {
         //Given
-        Board project = prepareTestData();
 
         //When
         List<TaskList> undoneTasks = new ArrayList<>();
@@ -117,8 +117,6 @@ public class BoardTestSuite {
     @Test
     public void testAddTaskListFindLongTasks() {
         //Given
-        Board project = prepareTestData();
-
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
@@ -131,5 +129,53 @@ public class BoardTestSuite {
 
         //Then
         Assert.assertEquals(2, longTasks);
+    }
+
+    @Test
+    // classic way
+    public  void  testAddTaskListAverageWorkingOnTask() {
+        //Given
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+
+        long nb = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .map(t -> t.getCreated())
+                .filter(d -> d.compareTo(LocalDate.now()) < 0)
+                .count();
+
+        int sum = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .filter(t -> t.getCreated().compareTo(LocalDate.now()) < 0)
+                .mapToInt(t -> t.daysBetweenCreatedAtDateAndNow())
+                .sum();
+
+
+        //Then
+        Assert.assertEquals(2, nb);
+        Assert.assertEquals(30, sum);
+        Assert.assertEquals(30 / 2, sum / nb);
+    }
+
+    @Test
+    // average way
+    public  void  testAddTaskListAverageWorkingOnTaskCheckAverage() {
+        //Given
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+
+        double average = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .filter(t -> t.getCreated().compareTo(LocalDate.now()) < 0)
+                .mapToDouble(t -> t.daysBetweenCreatedAtDateAndNow())
+                .average().getAsDouble();
+
+        //Then
+        Assert.assertEquals(15, average, 0.01);
     }
 }

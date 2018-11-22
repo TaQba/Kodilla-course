@@ -1,6 +1,6 @@
 package com.kodilla.stream.portfolio;
 
-import java.time.LocalDate;
+import java.time.*;
 
 public final class Task {
     private final String title;
@@ -43,6 +43,11 @@ public final class Task {
 
     public LocalDate getDeadline() {
         return deadline;
+    }
+
+    public int daysBetweenCreatedAtDateAndNow() {
+        LocalDate today = LocalDate.now();
+        return  Period.between(created, today).getDays();
     }
 
     @Override
