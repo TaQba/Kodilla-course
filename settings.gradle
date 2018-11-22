@@ -3,4 +3,6 @@ include 'kodilla_testing'
 include 'kodilla-testing'
 include 'kodilla-stream'
 include 'kodilla-stream'
+include ' kodilla-exception'
+include 'kodilla-exception'
 
