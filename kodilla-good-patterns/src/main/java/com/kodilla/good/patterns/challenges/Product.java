@@ -1,6 +1,6 @@
 package com.kodilla.good.patterns.challenges;
 
-public class Product {
+public class Product extends Object {
     String name;
     public Product(String name) {
         this.name = name;
