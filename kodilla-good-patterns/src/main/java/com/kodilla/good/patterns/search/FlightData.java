@@ -24,6 +24,4 @@ public final class FlightData {
                 .filter(s -> s.getTo() == cityName)
                 .collect(Collectors.toSet());
     }
-
-
 }
