@@ -1,16 +1,19 @@
 package com.kodilla.good.patterns.search;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class Flight {
+    private final String name;
     private final String from;
     private final String to;
-    private final String through;
+    private final Set<Flight> set = new HashSet<>();
 
-    public Flight(String from, String to, String through) {
+    public Flight(final String name, final String from, final String to) {
         this.from = from;
         this.to = to;
-        this.through = through;
+        this.name = name;
     }
 
     public String getFrom() {
@@ -21,31 +24,37 @@ public class Flight {
         return to;
     }
 
-    public String getThrough() {
-        return through;
+    public String getName() {
+        return name;
+    }
+
+    public void addToSet(Flight flight) {
+        set.add(flight);
+    }
+
+    public Set<Flight> getSet() {
+        return set;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Flight)) return false;
         Flight flight = (Flight) o;
-        return Objects.equals(from, flight.from) &&
-                Objects.equals(to, flight.to) &&
-                Objects.equals(through, flight.through);
+        return Objects.equals(getName(), flight.getName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(from, to, through);
+        return Objects.hash(getName());
     }
 
     @Override
     public String toString() {
         return "Flight{" +
-                "from='" + from + '\'' +
+                "name='" + name + '\'' +
+                ", from='" + from + '\'' +
                 ", to='" + to + '\'' +
-                ", through='" + through + '\'' +
                 '}';
     }
 }

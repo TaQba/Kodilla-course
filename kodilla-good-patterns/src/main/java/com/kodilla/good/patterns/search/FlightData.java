@@ -2,23 +2,28 @@ package com.kodilla.good.patterns.search;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public final class FlightData {
-    public static List<Flight> getList() {
-        final List<Flight> theList = new ArrayList<Flight>();
-        theList.add(new Flight("Warsaw","Cracow",""));
-        theList.add(new Flight("Warsaw","London",""));
-        theList.add(new Flight("Poznan","London",""));
-        theList.add(new Flight("Bydgoszcz","Cracow",""));
-        theList.add(new Flight("Bydgoszcz","Moscow","Riga"));
-        theList.add(new Flight("Warsaw","Praha","Cracow"));
-        theList.add(new Flight("Praha","Warsaw","Olso"));
-        theList.add(new Flight("Bydgoszcz","Oslo",""));
-        theList.add(new Flight("Wroclaw","Oslo",""));
-        theList.add(new Flight("Oslo","Warsaw","Riga"));
-        theList.add(new Flight("Bydgoszcz","Cracow","Warsaw"));
-        theList.add(new Flight("Poznan","Cracow",""));
-
-        return new ArrayList<Flight>(theList);
+    public static Set<Flight> from(final List<Flight> theList, final String cityName) {
+        return theList.stream()
+        .filter(s -> s.getFrom() == cityName)
+        .collect(Collectors.toSet());
     }
+
+    public static Set<Flight> through(final List<Flight> theList, final String cityName) {
+        return theList.stream()
+                .flatMap(list -> list.getSet().stream())
+                .filter(s -> s.getTo() == cityName)
+                .collect(Collectors.toSet());
+    }
+
+    public static Set<Flight> to(final List<Flight> theList, final String cityName) {
+        return theList.stream()
+                .filter(s -> s.getTo() == cityName)
+                .collect(Collectors.toSet());
+    }
+
+
 }
