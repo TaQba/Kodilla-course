@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kodilla.good.patterns.search.FlightDataTestSuite" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-12-05T20:21:08" hostname="JT-Windows" time="0.021">
+  <properties/>
+  <testcase name="shouldReturnTwoFlightWhenSearchThroughPort" classname="com.kodilla.good.patterns.search.FlightDataTestSuite" time="0.018"/>
+  <testcase name="shouldReturnTwoFlightWhenSearchToPort" classname="com.kodilla.good.patterns.search.FlightDataTestSuite" time="0.001"/>
+  <testcase name="shouldReturnTwoFlightWhenSearchFromPort" classname="com.kodilla.good.patterns.search.FlightDataTestSuite" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kodilla.exception.test.AirportRunnerTestSuite" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-12-05T20:21:05" hostname="JT-Windows" time="0.02">
+  <properties/>
+  <testcase name="shouldAirportBoardThrowSomeException" classname="com.kodilla.exception.test.AirportRunnerTestSuite" time="0.015"/>
+  <testcase name="shouldAirportBoardHaveFlights" classname="com.kodilla.exception.test.AirportRunnerTestSuite" time="0.005"/>
+  <system-out><![CDATA[Found flight{departureAirport='Monaco', arrivalAirport='Glasgow'}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

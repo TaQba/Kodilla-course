@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kodilla.stream.beautifie.PoemBeautifierTestSuite" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-12-05T20:21:52" hostname="JT-Windows" time="0.003">
+  <properties/>
+  <testcase name="shouldReturnLowerCaseText" classname="com.kodilla.stream.beautifie.PoemBeautifierTestSuite" time="0.002"/>
+  <testcase name="shouldReturnUpperCaseText" classname="com.kodilla.stream.beautifie.PoemBeautifierTestSuite" time="0.0"/>
+  <system-out><![CDATA[Poem beautified: test2
+Poem beautified: TEST1
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
