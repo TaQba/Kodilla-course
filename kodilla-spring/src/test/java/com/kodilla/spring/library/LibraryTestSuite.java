@@ -9,6 +9,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+//TEST nie dziala :(
+// java.lang.IllegalStateException: Failed to load ApplicationContext
 public class LibraryTestSuite {
     @Test
     public void testLoadFromDb() {
