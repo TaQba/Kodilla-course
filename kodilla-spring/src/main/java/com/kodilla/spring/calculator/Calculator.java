@@ -11,9 +11,7 @@ public class Calculator {
     public void add(double a, double b) {
         display.displayValue(a + b);
     }
-    public void sub(double a, double b) {
-        display.displayValue(a - b);
-    }
+    public void sub(double a, double b) { display.displayValue(a - b); }
     public void mul(double a, double b) {
         display.displayValue(a * b);
     }
