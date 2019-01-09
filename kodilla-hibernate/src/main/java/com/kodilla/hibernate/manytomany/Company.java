@@ -4,6 +4,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.*;
 
+@NamedQuery(
+        name = "Company.searchNameLike",
+        query = "FROM Company WHERE company_name LIKE :COMPANY_NAME"
+)
+
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
