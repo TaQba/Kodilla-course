@@ -4,10 +4,17 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.*;
 
-@NamedQuery(
-        name = "Employee.retrieveByName",
-        query = "FROM Employee WHERE lastname = :LASTNAME"
-)
+@NamedQueries({
+        @NamedQuery(
+                name = "Employee.retrieveByName",
+                query = "FROM Employee WHERE lastname = :LASTNAME"
+        )
+        ,
+        @NamedQuery(
+                name = "Employee.searchNameLike",
+                query = "FROM Employee WHERE lastname LIKE :LASTNAME"
+        )
+})
 
 @Entity
 @Table(name = "EMPLOYEES")
