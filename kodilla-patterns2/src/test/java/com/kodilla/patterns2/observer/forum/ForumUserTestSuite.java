@@ -12,7 +12,7 @@ public class ForumUserTestSuite<johnSmith> {
         ForumTopic javaHelpForum = new JavaHelpForumTopic();
         ForumTopic javaToolsForum = new JavaToolsForumTopic();
 
-        ForumUser johnSmith = new Forum User("John Smith");
+        ForumUser johnSmith = new ForumUser("John Smith");
         ForumUser ivoneEscobar = new ForumUser("Ivone Escobar");
         ForumUser jessiePinkman = new ForumUser("Jessie Pinkman");
 
