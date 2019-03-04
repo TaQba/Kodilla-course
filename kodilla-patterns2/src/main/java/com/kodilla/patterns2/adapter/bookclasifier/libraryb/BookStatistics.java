@@ -1,4 +1,8 @@
 package com.kodilla.patterns2.adapter.bookclasifier.libraryb;
 
-public class BookStatistics {
+import java.util.Map;
+
+public interface BookStatistics {
+    int averagePublicationYear(Map<BookSignature, Book> books);
+    int medianPublicationYear(Map<BookSignature, Book> books);
 }
