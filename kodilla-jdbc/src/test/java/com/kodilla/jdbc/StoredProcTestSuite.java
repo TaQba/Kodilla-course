@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class StoredProcTestSuite {
     @Test
@@ -30,6 +31,28 @@ public class StoredProcTestSuite {
             howMany = rs.getInt("HOW_MANY");
         }
         assertEquals(0,howMany);
+    }
+
+    @Test
+    public void testUpdateBestsellers() throws SQLException {
+        //Given
+        DbManager dbManager = DbManager.getInstance();
+        String sql = "UPDATE BOOKS SET BESTSELLER=0";
+        Statement statement = dbManager.getConnection().createStatement();
+        statement.executeUpdate(sql);
+
+        //When
+        String sqlProc = "CALL UpdateBestsellers()";
+        statement.executeUpdate(sqlProc);
+
+        //Then
+        String sqlCheck = "SELECT COUNT(*) AS HOW_MANY FROM BOOKS WHERE BESTSELLER=0";
+        ResultSet rs = statement.executeQuery(sqlCheck);
+        int howMany = -1;
+        if(rs.next()) {
+            howMany = rs.getInt("HOW_MANY");
+        }
+        assertNotEquals(0,howMany);
     }
 
 }
