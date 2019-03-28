@@ -40,10 +40,10 @@ public class CrudAppTestSuite {
         assertTrue(deleteCrudAppTestTask(taskName));
     }
 
-//    @Test
-//    public void shouldCheckTrelloCard() throws InterruptedException {
-//        assertTrue(checkTaskExistInTrello(TASK_NAME));
-//    }
+    @Test
+    public void shouldCheckTrelloCard() throws InterruptedException {
+        assertTrue(checkTaskExistInTrello(TASK_NAME));
+    }
 
     private boolean checkTaskExistInTrello(String taskName) throws InterruptedException {
         driverTrello.findElement(By.id("user")).sendKeys("jakub.tadych@googlemail.com");
